@@ -1,0 +1,29 @@
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --background: #fff url('../../assets/images/background.png') no-repeat center center / cover;
+}
+
+#container {
+  margin: 20px;
+}
+
+#container ion-card img {
+  width: 100%;
+  height: auto;
+}
+
+#container ion-card-title {
+  text-transform: capitalize;
+}
+
+#container ion-label {
+  & a {
+    color: var(--ion-color-brown-light);
+  }
+}
+
+#container ion-card-content {
+  font-size: 16px;
+}

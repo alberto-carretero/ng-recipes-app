@@ -1,0 +1,25 @@
+<ion-menu side="start" menuId="first-menu" contentId="main">
+  <ion-header>
+    <ion-toolbar color="brown">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+    <ion-item class="item-user">
+      <ion-label color="brown" *ngIf="user$ | async as user">
+        {{ user?.email }}</ion-label
+      >
+    </ion-item>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle
+        *ngFor="let item of menuOptions | async"
+        [routerLink]="item.redirectTo"
+      >
+        <ion-item (click)="item.action ? onLogout() : false">
+          <ion-icon color="brown" slot="start" [name]="item.icon"></ion-icon>
+          <ion-label color="brown-light">{{ item.name }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

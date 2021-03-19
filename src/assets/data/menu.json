@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "home",
+    "name": "Home",
+    "redirectTo": "/home"
+  },
+  {
+    "icon": "add-circle",
+    "name": "Add recipe",
+    "redirectTo": "/add-recipe"
+  },
+  {
+    "action": "logout",
+    "icon": "contact",
+    "name": "Logout",
+    "redirectTo": "/login"
+  }
+]

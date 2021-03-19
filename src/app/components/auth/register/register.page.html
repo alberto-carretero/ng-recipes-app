@@ -1,0 +1,15 @@
+<ion-content class="form-container">
+  <img class="logo" src="./assets/images/logo.png">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Email</ion-label>
+      <ion-input color="brown" type="email" name="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Password</ion-label>
+      <ion-input color="brown" type="password" name="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-button class="login-btn" type="submit" expand="full" color="brown-light">Register</ion-button>
+  </form>
+  <ion-label color="brown" class="link-lbl">Do you have an account? <a [routerLink]="['/login']"> Login</a></ion-label>
+</ion-content>

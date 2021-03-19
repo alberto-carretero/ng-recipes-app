@@ -1,0 +1,40 @@
+ion-content {
+    --background: #fff url('../../../assets/images/background.png') no-repeat center center / cover;
+}
+
+.recipe-title {
+    padding: 10px 25px 0 25px;
+}
+
+ion-slides {
+    height: calc(100% - 110px);
+    --bullet-background: var(--ion-color-brown);  
+    --bullet-background-active: var(--ion-color-brown-light);    
+}
+
+ion-grid {
+    height: 100%;
+    padding: 0 25px;
+}
+
+ion-list {
+    width: 100%;
+    background: none;
+}
+
+ion-item {
+    --background: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--ion-color-brown-light);
+}
+
+h1, h2 {
+    margin: 10px 0;
+    color: var(--ion-color-brown);
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+}

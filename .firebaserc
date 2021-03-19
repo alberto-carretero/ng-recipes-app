@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "receips-eba65": {
+      "hosting": {
+        "app": [
+          "receips-eba65"
+        ]
+      }
+    }
+  }
+}

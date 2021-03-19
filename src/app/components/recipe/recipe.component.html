@@ -1,0 +1,70 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon color="brown" slot="start" name="arrow-round-back" (click)="onBack()"></ion-icon>
+    <ion-icon color="brown" slot="end" name="contact"></ion-icon>
+    <ion-grid>
+      <ion-row>
+          <ion-label color="brown" class="user" *ngIf="user$ | async as user"> {{ user?.email }}</ion-label>
+      </ion-row>
+      <ion-row>
+          <ion-label color="brown-light" class="logout" *ngIf="user$ | async as user" (click)="onLogout()"><strong>Logout</strong> </ion-label>
+      </ion-row>
+    </ion-grid>    
+  </ion-toolbar>
+</ion-header> -->
+
+<app-header *ngIf="user$ | async as user; else loading">
+  <ng-container back>
+    <ion-icon
+      color="brown"
+      slot="start"
+      name="arrow-round-back"
+      (click)="onBack()"
+    ></ion-icon>
+  </ng-container>
+</app-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container" *ngIf="!showSteps; else stepsTmpl">
+    <ion-card *ngFor="let recipe of recipes; let i = index">
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let image of recipe.images; let j = index">
+          <img src="{{ image }}" />
+          <span class="slide-text">Image {{ j }}</span>
+        </ion-slide>
+      </ion-slides>
+      <ion-card-header>
+        <ion-card-subtitle>{{ recipe.autor }}</ion-card-subtitle>
+        <ion-card-title color="brown">{{ recipe.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ recipe.description }}
+      </ion-card-content>
+      <ion-item>
+        <ion-label color="brown"
+          >Go to <span (click)="showStepsInfo(i)"> Steps</span></ion-label
+        >
+        <!-- <ion-icon
+          color="brown"
+          slot="end"
+          name="trash"
+          (click)="deleteRecipe(recipe.id)"
+        ></ion-icon> -->
+        <ion-icon
+          color="brown"
+          slot="end"
+          name="trash"
+          (click)="showModal(recipe.id)"
+        ></ion-icon>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ng-template #stepsTmpl>
+  <app-steps
+    [title]="recipes[recipeIndex].title"
+    [ingredients]="recipes[recipeIndex].ingredients"
+    [steps]="recipes[recipeIndex].steps"
+  ></app-steps>
+</ng-template>

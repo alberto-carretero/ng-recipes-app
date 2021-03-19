@@ -1,0 +1,71 @@
+<app-header>
+  <!-- <ng-container back>
+    <ion-icon color="brown" slot="start" name="arrow-round-back" (click)="onBack()"></ion-icon>
+  </ng-container> -->
+</app-header>
+
+<ion-content [fullscreen]="true" *ngIf="typesOfRecipes; else loading">
+  <form [formGroup]="addRecipeForm" (ngSubmit)="onAddRecipe()">
+    <ion-item>
+      <ion-label color="brown">Type of recipe</ion-label>
+      <ion-select placeholder="Select One" formControlName="type">
+        <ion-select-option
+          *ngFor="let type of typesOfRecipes"
+          value="{{ type }}"
+          >{{ type | uppercase }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item *ngFor="let item of inputTextArray" class="form-item">
+      <ion-label color="brown" position="floating">{{ item }}</ion-label>
+      <ion-input
+        color="brown"
+        type="text"
+        name="{{ item }}"
+        formControlName="{{ item }}"
+      ></ion-input>
+    </ion-item>
+    <!-- <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Autor</ion-label>
+      <ion-input color="brown" type="text" name="autor" formControlName="autor"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Description</ion-label>
+      <ion-input color="brown" type="text" name="description" formControlName="description"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Ingredients</ion-label>
+      <ion-input color="brown" type="text" name="ingredients" formControlName="ingredients"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Steps</ion-label>
+      <ion-input color="brown" type="text" name="steps" formControlName="steps"></ion-input>
+    </ion-item> -->
+    <!-- <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Images</ion-label>
+      <ion-input color="brown" type="text" name="images" formControlName="images"></ion-input>
+    </ion-item> -->
+    <ion-item class="form-item">
+      <ion-label color="brown" position="floating">Images</ion-label>
+      <ion-input
+        color="brown"
+        type="file"
+        name="images"
+        formControlName="images"
+        (change)="uploadImage($event)"
+      ></ion-input>
+    </ion-item>
+    <ion-button
+      class="add-recipe-btn"
+      type="submit"
+      expand="full"
+      color="brown-light"
+      [disabled]="!addRecipeForm.valid"
+      >Add recipe</ion-button
+    >
+  </form>
+</ion-content>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

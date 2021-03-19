@@ -1,0 +1,69 @@
+:host {
+  height: 100%;
+}
+
+ion-header {
+    padding: 0 5px;
+}
+
+ion-icon[name="contact"], 
+ion-icon[name="arrow-round-back"] {
+    width: 30px;
+    height: 30px;
+}
+
+ion-icon[name="trash"] {
+  cursor: pointer;
+}
+
+ion-row {
+    justify-content: flex-end;
+}
+
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --background: #fff url('../../../assets/images/background.png') no-repeat center center / cover;
+}
+
+#container {
+  margin: 20px;
+}
+
+#container ion-card img {
+  width: 100%;
+  height: auto;
+}
+
+#container ion-card-title {
+  text-transform: capitalize;
+}
+
+#container ion-label {
+  & span {
+    color: var(--ion-color-brown-light);
+  }
+}
+
+#container ion-card-content {
+  font-size: 16px;
+}
+
+.custon-nav{
+    cursor: pointer;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+ 
+.slide-text{
+   position: absolute;
+   color: #fff;
+   bottom: 30px;
+}
+
+ion-slides {
+  --bullet-background-active: var(--ion-color-brown-light);
+}

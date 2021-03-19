@@ -1,0 +1,29 @@
+<ion-content>
+    <div class="recipe-title"><h1>{{ title }}</h1></div>
+    <ion-slides pager="true" >
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <h2>Ingredients</h2>
+          </ion-row>
+          <ion-row>
+          <ion-list>
+            <ion-item *ngFor="let ingredient of ingredients">
+              <ion-label>{{ ingredient }}</ion-label>
+            </ion-item>
+          </ion-list>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+      <ion-slide *ngFor="let step of steps; let i = index">
+        <ion-grid>
+          <ion-row>
+            <h2>Step {{ i + 1 }}</h2>
+          </ion-row>
+          <ion-row>
+            <p>{{ step }}</p>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+</ion-content>

@@ -1,0 +1,23 @@
+ion-content {
+    --background: #fff url('../../../../assets/images/background.png') no-repeat center center / cover;
+
+    & > div.info {
+        margin: 30px 50px;
+
+        & > p {
+            color: var(--ion-color-brown);
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }    
+
+    & .logo {
+        display: flex;
+        width: 130px;
+        margin: 20px auto;
+    }
+}
+
+ion-button.send-verification-btn {
+    font-weight: bold;
+}

@@ -1,0 +1,13 @@
+ion-label {
+    font-weight: bold;
+}
+
+ion-item.item-user {
+    text-align: center;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+
+    & ion-label {
+        font-weight: normal;
+    }
+}

@@ -1,0 +1,9 @@
+<app-recipe
+  *ngIf="!loading; else loadingTmpl"
+  [documentId]="'meats'"
+  [recipes]="meatsRecipes"
+></app-recipe>
+
+<ng-template #loadingTmpl>
+  <app-loading></app-loading>
+</ng-template>
