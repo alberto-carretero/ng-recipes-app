@@ -1,10 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { RecipeI } from "src/app/interfaces/recipe";
 import { Observable } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
-import { Router } from "@angular/router";
 import { NavController, ModalController } from "@ionic/angular";
-import { FirestoreService } from "src/app/services/firestore.service";
 import { ModalComponent } from "../modal/modal.component";
 
 @Component({
@@ -16,56 +14,40 @@ export class RecipeComponent implements OnInit {
   @Input() documentId: string;
   @Input() recipes: RecipeI[];
 
+  @Output() deleteRecipe = new EventEmitter<string>();
+
   public user$: Observable<any> = this.authService.afAuth.user;
   public showSteps = false;
   public recipeIndex = 0;
 
   constructor(
     private authService: AuthService,
-    // private router: Router,
     private navCtrl: NavController,
-    // private firestoreService: FirestoreService,
     private modalController: ModalController
   ) {}
 
-  ngOnInit() {
-    console.log("^^^^ Recipes ^^^^ ", this.recipes);
-  }
+  ngOnInit() {}
 
   showStepsInfo(index) {
     this.showSteps = true;
     this.recipeIndex = index;
   }
 
-  onBack() {
-    // this.router.navigate(['/home']);
-    this.navCtrl.back();
+  async onBack() {
+    await this.navCtrl.back();
   }
 
-  // async onLogout() {
-  //   try {
-  //     await this.authService.logout();
-  //     this.router.navigate(['/login']);
-  //   }
-  //   catch (error){
-  //     console.log('Logout error');
-  //   }
-  // }
-
-  async showModal(recipeId: string) {
+  async showDeleteModal(recipeId: string) {
     const modal = await this.modalController.create({
       component: ModalComponent,
       // cssClass: "my-class",
       componentProps: {
-        title: "My Modal",
+        title: "Delete recipe",
         text: "You will delete this recipe. Are you sure?",
         buttons: [
           {
             text: "Yes",
             action: "delete",
-            documentId: this.documentId,
-            subCollection: "dishes",
-            recipeId: recipeId,
           },
           {
             text: "No",
@@ -74,15 +56,13 @@ export class RecipeComponent implements OnInit {
         ],
       },
     });
+
+    modal.onDidDismiss().then((value) => {
+      if (value.data.dismissed === "delete") {
+        this.deleteRecipe.emit(recipeId);
+      }
+    });
+
     return await modal.present();
   }
-
-  // async deleteRecipe(recipeId: string) {
-  //   console.log(recipeId);
-  //   await this.firestoreService.deteleRecipe(
-  //     this.documentId,
-  //     "dishes",
-  //     recipeId
-  //   );
-  // }
 }

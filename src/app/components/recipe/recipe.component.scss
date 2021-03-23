@@ -3,28 +3,30 @@
 }
 
 ion-header {
-    padding: 0 5px;
+  padding: 0 5px;
 }
 
-ion-icon[name="contact"], 
+ion-icon[name="contact"],
 ion-icon[name="arrow-round-back"] {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
-ion-icon[name="trash"] {
+ion-icon[name="trash"],
+ion-icon[name="refresh"] {
   cursor: pointer;
 }
 
 ion-row {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    --background: #fff url('../../../assets/images/background.png') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #fff url("../../../assets/images/background.png") no-repeat
+    center center / cover;
 }
 
 #container {
@@ -50,18 +52,18 @@ ion-content {
   font-size: 16px;
 }
 
-.custon-nav{
-    cursor: pointer;
-    vertical-align: middle;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
- 
-.slide-text{
-   position: absolute;
-   color: #fff;
-   bottom: 30px;
+.custon-nav {
+  cursor: pointer;
+  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slide-text {
+  position: absolute;
+  color: #fff;
+  bottom: 30px;
 }
 
 ion-slides {

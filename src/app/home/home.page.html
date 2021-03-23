@@ -1,35 +1,4 @@
-<!-- <ion-header [translucent]="true" *ngIf="user$ | async as user; else loading">
-  <ion-toolbar>
-    <ion-icon color="brown" slot="start" name="contact"></ion-icon>
-    <ion-grid>
-      <ion-row>
-          <ion-label color="brown" class="user" *ngIf="user$ | async as user"> {{ user?.email }}</ion-label>
-      </ion-row>
-      <ion-row>
-          <ion-label color="brown-light" class="logout" *ngIf="user$ | async as user" (click)="onLogout()"><strong>Logout</strong> </ion-label>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-header> -->
-
 <app-header *ngIf="user$ | async as user; else loading"></app-header>
-
-<!-- <ion-content [fullscreen]="true" *ngIf="user$ | async as user; else loading">
-  <div id="container">
-    <ion-card *ngFor="let info of generalInfo">
-      <img src="{{ info.image }}" />
-      <ion-card-header>
-        <ion-card-title color="brown">{{ info.title }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        {{ info.description }}
-      </ion-card-content>
-      <ion-item>
-        <ion-label color="brown">Go to <a routerLink="/{{info.title | lowercase}}"> {{ info.title }}</a></ion-label>
-      </ion-item>
-    </ion-card>
-  </div>
-</ion-content> -->
 
 <ion-content [fullscreen]="true" *ngIf="user$ | async as user; else loading">
   <div id="container">
@@ -38,16 +7,19 @@
       <ion-card-header>
         <ion-card-title color="brown">{{ info.title }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        {{ info.description }}
-      </ion-card-content>
+      <ion-card-content> {{ info.description }} </ion-card-content>
       <ion-item>
-        <ion-label color="brown">Go to <a routerLink="/{{info.title | lowercase}}"> {{ info.title }}</a></ion-label>
+        <ion-label color="brown"
+          >Go to
+          <a routerLink="/{{info.title | lowercase}}">
+            {{ info.title }}</a
+          ></ion-label
+        >
       </ion-item>
     </ion-card>
   </div>
 </ion-content>
 
-<ng-template #loading>  
+<ng-template #loading>
   <app-loading></app-loading>
 </ng-template>

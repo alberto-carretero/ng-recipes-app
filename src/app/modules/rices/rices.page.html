@@ -1,5 +1,10 @@
-<app-recipe *ngIf="!loading; else loadingTmpl" [documentId]="'rices'" [recipes]="ricesRecipes"></app-recipe>
+<app-recipe
+  *ngIf="!loading; else loadingTmpl"
+  [documentId]="'rices'"
+  [recipes]="ricesRecipes"
+  (deleteRecipe)="deleteRecipe($event)"
+></app-recipe>
 
-<ng-template #loadingTmpl>  
-    <app-loading></app-loading>
+<ng-template #loadingTmpl>
+  <app-loading></app-loading>
 </ng-template>

@@ -2,6 +2,7 @@
   *ngIf="!loading; else loadingTmpl"
   [documentId]="'meats'"
   [recipes]="meatsRecipes"
+  (deleteRecipe)="deleteRecipe($event)"
 ></app-recipe>
 
 <ng-template #loadingTmpl>

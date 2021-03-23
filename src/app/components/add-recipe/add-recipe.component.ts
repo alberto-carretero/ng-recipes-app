@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-// import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FirestoreService } from "src/app/services/firestore.service";
 import { RecipeI } from "src/app/interfaces/recipe";
@@ -30,6 +29,7 @@ export class AddRecipeComponent implements OnInit {
     "ingredients",
     "steps",
   ];
+  path: string;
   // basePath: string = "assets/images";
   // selectedImage: any = null;
 
@@ -41,7 +41,7 @@ export class AddRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.firestoreService.getAllRecipes().then((querySnapshot) => {
+    this.firestoreService.getAllTypesOfRecipes().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         this.typesOfRecipes.push(doc.id);
@@ -63,7 +63,9 @@ export class AddRecipeComponent implements OnInit {
       await this.firestoreService
         .addRecipe(recipe, recipe.type, "dishes")
         .then(() => {
+          // this.storage.upload(this.path, this.path);
           this.router.navigate([`/${recipe.type}`]);
+          console.log("Add recipe: ", recipe.type);
         })
         .catch((error) => console.log("Add recipe error"));
     } catch (error) {
@@ -91,10 +93,9 @@ export class AddRecipeComponent implements OnInit {
 
   // uploadImage(event: any) {
   //   if (event.target.files && event.target.files[0]) {
-  //     this.basePath += event.target.files[0];
+  //     this.path = event.target.files[0];
 
-  //     this.storage.upload(`${this.imagePath}/${this.imagePath}`);
+  //     // this.storage.upload(this.path, this.path);
   //   }
-
   // }
 }
